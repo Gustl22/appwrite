@@ -98,9 +98,7 @@ class FunctionsV1
 {
     public $args = [];
 
-    public $allowed = [];
-
-    public function setUp()
+    public function setUp(): void
     {
     }
 
@@ -375,25 +373,7 @@ class FunctionsV1
         }
     }
 
-    public function filterEnvKey(string $string): string
-    {
-        if(empty($this->allowed)) {
-            $this->allowed = array_fill_keys(str_split('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_'), true);
-        }
-
-        $string     = str_split($string);
-        $output     = '';
-
-        foreach ($string as $char) {
-            if(array_key_exists($char, $this->allowed)) {
-                $output .= $char;
-            }
-        }
-
-        return $output;
-    }
-
-    public function tearDown()
+    public function tearDown(): void
     {
     }
 }
